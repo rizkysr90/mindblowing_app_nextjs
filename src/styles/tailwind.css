@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Playfair Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*,*::after,*::before {
+    box-sizing: border-box;
+}
+:root {
+    background-color: #fff;
+    font-family: 'Playfair Display', serif;
+}
+body,html {
+    margin: 0;
+    padding: 0;
+}
