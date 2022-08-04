@@ -5,11 +5,19 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    screens: {
+      'xs' : '400px',
+      'sm' : '640px',
+      'md' : '768px',
+      'lg' : '1024px',
+      'xl' : '1280px',
+      '2xl': '1536px'
+    },
     extend: {
         gridTemplateColumns: {
           // added new 4 column grid as new4
           'new4': 'repeat(auto-fit,minmax(300px,1fr))'
-        },
+        }
        
   },
   },
