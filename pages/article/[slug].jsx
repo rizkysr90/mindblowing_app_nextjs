@@ -42,7 +42,7 @@ export default function Article({article,contentArticle}) {
                 </div>
                 
                 <h1 className="font-extrabold text-2xl text-center my-4 xs:text-3xl sm:text-4xl">{articleTitle}</h1>
-                <img src ={coverImage} alt={altCoverImage} className='w-full h-44 xs:h-52 sm:h-72 lg:h-96 object-cover rounded-t-lg'></img>
+                <img src ={coverImage} alt={altCoverImage} className='w-full h-44 xs:h-52 sm:h-72 lg:h-96 object-cover lg:object-contain rounded-t-lg'></img>
                 <div className="mb-8">
                     <div className="flex flex-col items-center my-3 ">
                         <img className="w-14 h-14 object-cover rounded-full mt-4 mb-2"
@@ -56,7 +56,7 @@ export default function Article({article,contentArticle}) {
                 </div>
                 <div className="mx-2 min-h-screen flex flex-col">
                     <article
-                    className='prose lg:prose-xl text-left mx-auto text-lg mb-10'
+                    className='prose max-w-full lg:prose-xl text-left  mx-auto overflow-hidden text-lg mb-10'
                     dangerouslySetInnerHTML={{__html: contentArticle}}>
                         
                     </article>
@@ -93,7 +93,7 @@ export async function getServerSideProps({params}) {
     const contentArticle = await markdownToHtml(articleResponse.data.attributes.content);
     return {
         props : {
-            article : articleResponse.data,
+            article : articleResponse?.data,
             contentArticle
         }
     };

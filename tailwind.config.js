@@ -16,9 +16,17 @@ module.exports = {
     extend: {
         gridTemplateColumns: {
           // added new 4 column grid as new4
-          'new4': 'repeat(auto-fit,minmax(300px,1fr))'
-        }
-       
+          'new4': 'repeat(3,minmax(300px,1fr))'
+        },
+        // typography: {
+        //   'max-w': {
+        //     css: {
+        //       h2: {
+        //         color: colors.red['600'],
+        //       },
+        //     },
+        //   },
+        // },
   },
   },
   plugins: [require("daisyui"),require('@tailwindcss/typography')],
