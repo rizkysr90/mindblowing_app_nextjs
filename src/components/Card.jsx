@@ -31,6 +31,7 @@ export default function Card({article}) {
     const coverImage = article.cover_image?.data.attributes.url;
     const title = article.title;
     const contentPreview = article.preview_content;
+
     const category = article.categories?.data;
     const contributor_pp =  article.contributor?.data.attributes.profile_image?.data.attributes.url;
     const contributor_name = article.contributor?.data.attributes.name;

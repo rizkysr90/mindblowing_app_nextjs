@@ -2,7 +2,6 @@ import { fetcher } from "../../lib/api";
 import Layout from "../../src/components/Layout";
 import qs from "qs";
 import { capitalizeFirstLetter, formattedDate } from "../../src/components/Card";
-import {ExternalLinkIcon} from '@heroicons/react/outline'
 import markdownToHtml from "../../lib/markdownToHtml";
 export default function Article({article,contentArticle}) {
     const data = article.attributes;

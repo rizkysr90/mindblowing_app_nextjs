@@ -5,6 +5,9 @@ import Footer from './Footer'
 export default function Navbar({children}) {
     return (
         <>
+             <div className='bg-error text-center'>
+                a website is a work in progress
+             </div>
              {/* Navbar */}
              <div className="w-full navbar bg-base-100 shadow justify-center">
                 <div className="flex-none lg:hidden">

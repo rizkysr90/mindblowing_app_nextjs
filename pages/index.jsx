@@ -14,7 +14,7 @@ export default function Home({articles}) {
                 <ul className="grid gap-10 min-h-screen grid-cols-new4 sm:px-20"> 
                 {
                     articles?.map((data) => {
-                        return <Card key={data.id} article={data.attributes}/>
+                        return <Card key={data.id} article={data.attributes} />
                     })
                 }
                 </ul>
@@ -48,7 +48,7 @@ export async function getStaticProps() {
         encodeValuesOnly: true
     })
     const articleResponse = await fetcher(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/articles?${query}`)
-    console.log(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/articles?${query}`)
+
     return {
         props : {
             articles : articleResponse?.data
