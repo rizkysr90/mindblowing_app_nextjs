@@ -53,11 +53,11 @@ export default function Card({article}) {
                                     <img className="w-10 h-10 xs:w-14 xs:h-14 object-cover rounded-full mr-4"
                                         src={contributor_pp}
                                     />
-                                    <div className="opacity-70 flex items-center text-xs xs:text-sm font-semibold italic self-center">
-                                        <p>By {` ${contributor_name}`}</p>
+                                    <div className="opacity-70 flex items-center text-xs sm:text-sm font-semibold italic self-center">
+                                        <p>{` ${contributor_name}`}</p>
                                         <div className="mx-2 xs:mx-4">|</div>
                                         <time className='flex items-center '>
-                                            <CalendarIcon className='hidden xs:inline w-5 h-5 xs:w-6 xs:h-6 mr-1 xs:mr-2 opacity-70'></CalendarIcon>
+                                            <CalendarIcon className='hidden sm:inline sm:w-6 sm:h-6 mr-1 sm:mr-2 opacity-70'></CalendarIcon>
                                             {formattedDate(releaseArticle)}</time>
                                     </div>
                             </div>
