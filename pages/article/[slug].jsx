@@ -3,8 +3,8 @@ import Layout from "../../src/components/Layout";
 import qs from "qs";
 import { capitalizeFirstLetter, formattedDate } from "../../src/components/Card";
 import {ExternalLinkIcon} from '@heroicons/react/outline'
-
-export default function Article({article}) {
+import markdownToHtml from "../../lib/markdownToHtml";
+export default function Article({article,contentArticle}) {
     const data = article.attributes;
     const articleCategory = data.categories?.data
     const articleTitle = data.title;
@@ -18,7 +18,7 @@ export default function Article({article}) {
     const contributor_linkedin = data.contributor?.data.attributes.linkedin;
 
     const releaseArticle = data.release;
-    console.log(data);
+    console.log(contentArticle);
     return (
         <Layout>
             <div className="mt-16 flex flex-col mx-2">
@@ -44,8 +44,8 @@ export default function Article({article}) {
                 
                 <h1 className="font-extrabold text-2xl text-center my-4">{articleTitle}</h1>
                 <img src ={coverImage} alt={altCoverImage} className='w-full h-44 object-cover rounded-t-lg'></img>
-                <div className="relative min-h-screen">
-                    <div className="flex flex-col items-center my-3 absolute w-full -top-10 bg-white ">
+                <div className="">
+                    <div className="flex flex-col items-center my-3 ">
                         <img className="w-14 h-14 object-cover rounded-full mt-4 mb-2"
                             src={contributor_pp}
                         />
@@ -53,9 +53,16 @@ export default function Article({article}) {
                             <p>{` ${contributor_name}`}</p>
                         </div>
                         <div className="opacity-70 text-xs xs:text-sm font-semibold italic self-center">{contributor_work}</div>
-
                     </div>
                 </div>
+                <div className="mx-2">
+                    <article
+                    className='prose lg:prose-xl text-left mx-auto text-lg'
+                    dangerouslySetInnerHTML={{__html: contentArticle}}>
+                        
+                    </article>
+                </div>
+               
             </div>
         </Layout>
     )
@@ -63,7 +70,7 @@ export default function Article({article}) {
 
 export async function getServerSideProps({params}) {
     const query = qs.stringify({
-        fields: ['title','release','slug'],
+        fields: ['title','release','slug','content'],
         populate: {
             cover_image : {
                 populate : ''
@@ -82,10 +89,12 @@ export async function getServerSideProps({params}) {
     const {slug} = params;
     const articleResponse = await fetcher(
         `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/slugify/slugs/article/${slug}?${query}`);
-    
+
+    const contentArticle = await markdownToHtml(articleResponse.data.attributes.content);
     return {
         props : {
-            article : articleResponse.data
+            article : articleResponse.data,
+            contentArticle
         }
     };
 }
