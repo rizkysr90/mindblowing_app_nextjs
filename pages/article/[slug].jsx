@@ -55,11 +55,11 @@ export default function Article({article,contentArticle}) {
                 </div>
                 <div className="mx-2 min-h-screen flex flex-col">
                     <article
-                    className='prose max-w-full lg:prose-xl text-left  mx-auto overflow-hidden text-lg mb-10'
+                    className='prose max-w-full md:max-w-prose lg:prose-xl text-left  mx-auto overflow-hidden text-lg mb-10'
                     dangerouslySetInnerHTML={{__html: contentArticle}}>
                         
                     </article>
-                    <div class="divider mt-auto  opacity-70 text-xs xs:text-sm font-semibold italic">End</div>
+                    <div className="divider mt-auto  opacity-70 text-xs xs:text-sm font-semibold italic">End</div>
                 </div>
                
             </div>
