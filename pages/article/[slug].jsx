@@ -18,10 +18,9 @@ export default function Article({article,contentArticle}) {
     const contributor_linkedin = data.contributor?.data.attributes.linkedin;
 
     const releaseArticle = data.release;
-    console.log(contentArticle);
     return (
         <Layout>
-            <div className="mt-16 flex flex-col mx-2">
+            <div className="mt-16 flex flex-col mx-2 ">
                 <div className="flex justify-center">
                     {
                         articleCategory?.map(data => {
@@ -42,25 +41,26 @@ export default function Article({article,contentArticle}) {
                     </time>
                 </div>
                 
-                <h1 className="font-extrabold text-2xl text-center my-4">{articleTitle}</h1>
-                <img src ={coverImage} alt={altCoverImage} className='w-full h-44 object-cover rounded-t-lg'></img>
-                <div className="">
+                <h1 className="font-extrabold text-2xl text-center my-4 xs:text-3xl sm:text-4xl">{articleTitle}</h1>
+                <img src ={coverImage} alt={altCoverImage} className='w-full h-44 xs:h-52 sm:h-72 lg:h-96 object-cover rounded-t-lg'></img>
+                <div className="mb-8">
                     <div className="flex flex-col items-center my-3 ">
                         <img className="w-14 h-14 object-cover rounded-full mt-4 mb-2"
                             src={contributor_pp}
                         />
-                        <div className="opacity-70 flex items-center text-xs xs:text-sm font-semibold italic self-center">
-                            <p>{` ${contributor_name}`}</p>
+                        <div className="flex flex-col items-center text-xs xs:text-sm font-semibold italic self-center">
+                            <p className="text-base">{contributor_name}</p>
+                            <p className="opacity-70 ">{contributor_work}</p>
                         </div>
-                        <div className="opacity-70 text-xs xs:text-sm font-semibold italic self-center">{contributor_work}</div>
                     </div>
                 </div>
-                <div className="mx-2">
+                <div className="mx-2 min-h-screen flex flex-col">
                     <article
-                    className='prose lg:prose-xl text-left mx-auto text-lg'
+                    className='prose lg:prose-xl text-left mx-auto text-lg mb-10'
                     dangerouslySetInnerHTML={{__html: contentArticle}}>
                         
                     </article>
+                    <div class="divider mt-auto  opacity-70 text-xs xs:text-sm font-semibold italic">End</div>
                 </div>
                
             </div>
