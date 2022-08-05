@@ -1,4 +1,4 @@
-import {CalendarIcon} from '@heroicons/react/solid'
+import {DotsVerticalIcon} from '@heroicons/react/solid'
 import Link from 'next/link';
 export function formattedDate(strDate) {
     const month = {
@@ -41,25 +41,28 @@ export default function Card({article}) {
     return (
         <>
             <li className="mx-4 sm:mx-0 flex flex-col ">
-                <div className="">
-                    <img className="w-full h-48 object-cover rounded-t-md" 
-                    src={coverImage} alt='cover image mindblowing artikel'/>
-
+                <div className="flex mt-3 p-2 mx-4 rounded-t-md  bg-base-100">
+                    <img className="w-10 h-10 xs:w-14 xs:h-14 object-cover rounded-full mr-3"
+                        src={contributor_pp}
+                    />
+                    <div className="opacity-70 flex flex-col   sm:text-sm justify-center ">
+                        <p className='text-base italic font-semibold'>{` ${contributor_name}`}</p>
+                        <time className='text-xs'>
+                            {formattedDate(releaseArticle)}
+                        </time>
+                    </div>
+                    <div className='ml-auto'>
+                        <DotsVerticalIcon className='flex items-center h-full w-5'></DotsVerticalIcon>
+                    </div>
                 </div>
+                
                 <Link href= {`/article/${slugArticle}`}>
                     <a>
                         <div className="mx-4">
-                                <div className="flex my-3">
-                                    <img className="w-10 h-10 xs:w-14 xs:h-14 object-cover rounded-full mr-4"
-                                        src={contributor_pp}
-                                    />
-                                    <div className="opacity-70 flex items-center text-xs sm:text-sm font-semibold italic self-center">
-                                        <p>{` ${contributor_name}`}</p>
-                                        <div className="mx-2 xs:mx-4">|</div>
-                                        <time className='flex items-center '>
-                                            <CalendarIcon className='hidden sm:inline sm:w-6 sm:h-6 mr-1 sm:mr-2 opacity-70'></CalendarIcon>
-                                            {formattedDate(releaseArticle)}</time>
-                                    </div>
+                            <div className="">
+                                <img className="w-full h-48 object-cover " 
+                                src={coverImage} alt='cover image mindblowing artikel'/>
+
                             </div>
                             <h2 className="font-bold text-xl my-3 ">{title}</h2>
                             <p className="font-normal text-base">{contentPreview}</p>

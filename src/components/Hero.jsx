@@ -6,7 +6,7 @@ export default function Hero() {
                 <div className="font-medium text-sm xs:text-base text-center sm:text-left sm:text-2xl">
                     Discover stories, thinking, and experience
                 </div>
-                <button className="btn w-3/5 sm:w-2/5 mt-8 normal-case text-lg">Let's reading</button>
+                <button className="btn w-3/5  lg:w-2/5 mt-8 normal-case text-lg">Let's reading</button>
            </div>
            <div className="basis-2/4 hidden  sm:flex items-center">
              <img className="block" 
