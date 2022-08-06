@@ -18,7 +18,7 @@ export default function Navbar({children}) {
                 <div className="flex-1 px-2 mx-2 font-bold text-2xl xs:text-3xl flex lg:block justify-center">
                     <Link href="/">
                         <a>
-                            MindBlowing
+                            rizkysr90
                         </a>
                     </Link>
                 </div>
