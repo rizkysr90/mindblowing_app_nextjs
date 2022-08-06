@@ -6,7 +6,7 @@ export default function Navbar({children}) {
     return (
         <>
              <div className='bg-error text-center'>
-                a website is a work in progress
+                {`a website is a work in progress (beta)`} 
              </div>
              {/* Navbar */}
              <div className="w-full navbar bg-base-100 shadow justify-center">
@@ -36,7 +36,7 @@ export default function Navbar({children}) {
                                 <li><a>Submenu 2</a></li>
                             </ul>
                         </li>
-                        <li><a>Navbar Item 1</a></li>
+                        <li><a>Todo</a></li>
 
                     </ul>
                 </div>

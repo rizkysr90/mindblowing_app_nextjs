@@ -71,7 +71,7 @@ export default function Card({article}) {
                                     {
                                         category?.map(data => {
                                             return (
-                                            <div className="bg-accent py-1 px-2 text-sm rounded-md" 
+                                            <div className="bg-accent py-1 px-2 text-sm mr-1 rounded-md" 
                                             key={data.id}><span className="opacity-70">
                                                 {capitalizeFirstLetter(data.attributes?.name)}
                                                 </span>
