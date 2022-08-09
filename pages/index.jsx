@@ -3,14 +3,19 @@ import Card from "../src/components/Card";
 import Hero from "../src/components/Hero";
 import Layout from "../src/components/Layout";
 import qs from "qs";
+import CardWithoutImage from "../src/components/CardWithoutImage";
 
 
-export default function Home({articles}) {
+export default function Home({articles,projects}) {
     return (
         <>
             <Layout>
                 {/* Recent post */}
                 <Hero/> 
+                <div className="flex justify-center mb-10">
+                    <h2 className="text-2xl border-b-2 inline-block opacity-70 sm:px-20 text-center pb-2">Articles</h2>
+
+                </div>
                 <ul className="grid gap-10 min-h-screen grid-cols-new4 sm:px-20"> 
                 {
                     articles?.map((data) => {
@@ -18,7 +23,16 @@ export default function Home({articles}) {
                     })
                 }
                 </ul>
-                
+                <div className="flex justify-center my-10">
+                    <h2 className="text-2xl border-b-2 inline-block opacity-70 sm:px-20 text-center pb-2">Projects</h2>
+                </div>
+                <ul className="grid gap-10 grid-cols-new4 sm:px-20">
+                    {
+                        projects.map((data) => {
+                            return <CardWithoutImage key={data.id} project={data.attributes}/>
+                        })
+                    }
+                </ul>
             </Layout>  
         </>
     )
@@ -48,10 +62,11 @@ export async function getStaticProps() {
         encodeValuesOnly: true
     })
     const articleResponse = await fetcher(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/articles?${query}`)
-
+    const projectResponse = await fetcher(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/projects`);
     return {
         props : {
-            articles : articleResponse?.data
+            articles : articleResponse?.data,
+            projects : projectResponse?.data,
         }
     }
 }

@@ -10,11 +10,8 @@ export default function Article({article,contentArticle}) {
     const coverImage = data.cover_image?.data.attributes.url;
     const altCoverImage = data.cover_image?.data.attributes.alternativeText;
     const contributor_pp = data.contributor?.data.attributes.profile_image.data.attributes.url;
-    const altContributor_pp = data.contributor?.data.attributes.profile_image.data.attributes.alternativeText;
     const contributor_name = data.contributor?.data.attributes.name;
     const contributor_work = data.contributor?.data.attributes.work;
-    const contributor_instagram = data.contributor?.data.attributes.instagram;
-    const contributor_linkedin = data.contributor?.data.attributes.linkedin;
 
     const releaseArticle = data.release;
     return (
@@ -67,7 +64,10 @@ export default function Article({article,contentArticle}) {
     )
 }
 
-export async function getServerSideProps({params}) {
+
+
+
+export async function getStaticProps({params}) {
     const query = qs.stringify({
         fields: ['title','release','slug','content'],
         populate: {
@@ -96,4 +96,18 @@ export async function getServerSideProps({params}) {
             contentArticle
         }
     };
+}
+export async function getStaticPaths() {
+    const getAllArticle = await fetcher(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/articles`);
+    const getAllArticleSlug = getAllArticle.data.map((data) => {
+        return {
+            params: {
+                slug: data.attributes.slug
+            }
+        }
+    })
+    return {
+        paths : getAllArticleSlug,
+        fallback: false
+    }
 }
